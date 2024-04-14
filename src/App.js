@@ -7,79 +7,73 @@ import products from "./db/data";
 import "./index.css";
 import Card from "./components/Card";
 
-
 function App() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState(null)
+  const [category, setCategory] = useState(null);
 
   const handleChange = event => {
-    setQuery(event.target.value)
-    
-  }
-
-
-  const filteredItems = products.filter(
-    (product) => product.title.toLowerCase().includes(query.toLowerCase())
-  );
-
+    setQuery(event.target.value);
+  };
 
   const handleRadio = event => {
-    setCategory(event.target.value)
-    
-  }
+    setCategory(event.target.value);
+  };
 
   const handleButton = event => {
-    setCategory(event.target.value)
-    console.log(category)
+    setCategory(event.target.value);
+    console.log(category);
+  };
 
-    
-  }
+  const filteredItems = products.filter(product =>
+    product.title.toLowerCase().includes(query.toLowerCase())
+  );
 
   function filteredData(products, selected, query) {
     let filteredProducts = products;
 
-    // Filtering Input Items
     if (query) {
       filteredProducts = filteredItems;
     }
 
-    // Applying selected filter
     if (selected) {
-      filteredProducts = filteredProducts.filter(
-        ({ category, color, company, newPrice, title }) =>
-          category === selected ||
-          color === selected ||
-          company === selected ||
-          newPrice === selected ||
-          title === selected
+      filteredProducts = filteredProducts.filter(product =>
+        product.category === selected ||
+        product.color === selected ||
+        product.company === selected ||
+        product.newPrice.toString() === selected ||
+        product.title === selected
       );
     }
 
-    return filteredProducts.map(
-      ({ img, title, star, reviews, prevPrice, newPrice }) => (
-        <Card
-          key={Math.random()}
-          img={img}
-          title={title}
-          star={star}
-          reviews={reviews}
-          prevPrice={prevPrice}
-          newPrice={newPrice}
-        />
-      )
-    );
-
+    return filteredProducts.map(({ img, title, star, reviews, prevPrice, newPrice }) => (
+      <Card
+        key={Math.random()} // Consider using unique IDs instead of Math.random() if possible
+        img={img}
+        title={title}
+        star={star}
+        reviews={reviews}
+        prevPrice={prevPrice}
+        newPrice={newPrice}
+      />
+    ));
   }
 
   const result = filteredData(products, category, query);
+
   return (
-    <>
-    <Sidebar handleRadio={handleRadio} />
-    <Nav query={query} handleChange={handleChange} />
-    <Recommended handleButton={handleButton} />
-    <Products result={result} />
-   
-    </>
+    <div className="flex h-screen">
+      <Sidebar handleRadio={handleRadio} />
+      <div className="flex-grow flex flex-col">
+        <Nav handleChange={handleChange} query={query} />
+        <div className="overflow-auto">
+          <Recommended handleButton={handleButton} />
+          <div>
+          <Products result={result} />
+          </div>
+        
+        </div>
+      </div>
+    </div>
   );
 }
 

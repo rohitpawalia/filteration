@@ -1,11 +1,12 @@
-import "./Colors.css";
+
 import Input from "../../components/Input";
 
 const Colors = ({ handleRadio }) => {
   return (
     <>
-      <div>
+      <div className="flex flex-col p-2">
         <h2 className="sidebar-title color-title">Colors</h2>
+        <div className="space-y-1 m-2">
         <label className="sidebar-label-container">
           <input onChange={handleRadio} type="radio" value="" name="test1" />
           <span className="checkmark all"></span>
@@ -44,19 +45,8 @@ const Colors = ({ handleRadio }) => {
           color="green"
         />
 
-        <label className="sidebar-label-container">
-          <input
-            handleRadio={handleRadio}
-            type="radio"
-            value="white"
-            name="test1"
-          />
-          <span
-            className="checkmark"
-            style={{ background: "white", border: "2px solid black" }}
-          ></span>
-          White
-        </label>
+       
+        </div>
       </div>
     </>
   );

@@ -1,13 +1,13 @@
 import React from 'react'
-import "./Category.css"
+
 import Input from '../../components/Input'
 
 const Category = ({handleRadio}) => {
   return (
-    <div>
-      <h2 className='sidebar-title'>Category</h2>
-      <div>
-      <label className="sidebar-label-container">
+    <div className='flex flex-col p-2'>
+      <h2 className=''>Category</h2>
+      <div className="space-y-1 m-2">
+      <label>
           <input onChange={handleRadio} type="radio" value="" name="test" />
           <span className="checkmark"></span>All
         </label>

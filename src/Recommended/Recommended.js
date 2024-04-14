@@ -1,13 +1,13 @@
 
 import Button from '../components/Button'
-import './Recommended.css';
+
 
 
 const Recommended = ({handleButton}) => {
   return (
-  <div className="container">
-    <h3 className="recommended-title">Recommended</h3>
-    <div className="recommended-flex">
+   <div className='p-4 space-y-2'>
+    <h3>Recommended</h3>
+    
     <Button handleButton={handleButton}
       title="All Products"
       value="" />
@@ -23,9 +23,9 @@ const Recommended = ({handleButton}) => {
       <Button handleButton={handleButton}
       title="Vans"
       value="Vans" />
+      </div>
       
-     </div>
-  </div>
+    
   )
 }
 

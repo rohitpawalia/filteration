@@ -1,14 +1,15 @@
 import React from 'react'
 import Input from '../../components/Input'
-import './Price.css';
+
 
 const Price = ({ handleRadio }) => {
   return (
     <>
-      <div className="ml">
+      <div className="flex flex-col p-2">
         <h2 className="sidebar-title price-title">Price</h2>
 
-        <label className="sidebar-label-container">
+      <div className='space-y-2 m-2'>
+      <label className="sidebar-label-container">
           <input onChange={handleRadio} type="radio" value="" name="test2" />
           <span className="checkmark"></span>All
         </label>
@@ -39,7 +40,7 @@ const Price = ({ handleRadio }) => {
           value={200}
           title="Over $150"
           name="test2"
-        />
+        /></div> 
       </div>
     </>
   );
